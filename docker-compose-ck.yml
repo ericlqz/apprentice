@@ -1,0 +1,53 @@
+version: '2'
+
+services:
+  clickhouse01:
+    image: yandex/clickhouse-server
+    container_name: chs01
+    expose:
+      - "9000"
+    user: root
+    ports:
+      - "9001:9000"
+    volumes:
+      - ./ch01/etc:/etc/clickhouse-server
+      - ./ch01/data:/var/lib/clickhouse
+    ulimits:
+      nofile:
+        soft: 262144
+        hard: 262144
+    privileged: true
+
+  clickhouse02:
+    image: yandex/clickhouse-server
+    container_name: chs02
+    expose:
+      - "9000"
+    user: root
+    ports:
+      - "9002:9000"
+    volumes:
+      - ./ch02/etc:/etc/clickhouse-server
+      - ./ch02/data:/var/lib/clickhouse
+    ulimits:
+      nofile:
+        soft: 262144
+        hard: 262144
+    privileged: true
+
+  clickhouse03:
+    image: yandex/clickhouse-server
+    container_name: chs03
+    expose:
+      - "9000"
+    user: root
+    ports:
+      - "9003:9000"
+    volumes:
+      - ./ch03/etc:/etc/clickhouse-server
+      - ./ch03/data:/var/lib/clickhouse
+    ulimits:
+      nofile:
+        soft: 262144
+        hard: 262144
+    privileged: true
